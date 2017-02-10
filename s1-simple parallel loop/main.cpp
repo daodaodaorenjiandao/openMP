@@ -2,7 +2,7 @@
 #include <omp.h>
 #include <windows.h>
 
-#define ARRAY_SIZE 1000
+#define ARRAY_SIZE 100
 
 using namespace std;
 
@@ -15,6 +15,8 @@ int main()
 	{
 		//这里循环迭代器是一个私有变量，所有不需要用private子句明显指明
 		threadIds[i] = omp_get_thread_num();
+		//int k = 0;	//在此指令下，k也会被处理为私有属性，当前openMP的版本为2.0
+		//threadIds[i] = (int)&k;
 	}
 
 	cout << "thread id : \n";
